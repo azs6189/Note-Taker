@@ -1,26 +1,21 @@
+// Require Dependencies
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
-const router = require("./routes/index");
-const PORT = process.env.port || 3001;
+
+// Initialize express app
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// Setup data parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.json());
+app.use(express.static(__dirname));
 
-// GET route for homepage
-app.get("/", (req, res) =>
-	res.sendFile(path.join(__dirname, "./public/index.html"))
-);
+//Require routes file
+require("./routes/routes")(app);
 
-// GET route for notes page
-app.get("/notes", (req, res) =>
-	res.sendFile(path.join(__dirname, "./public/notes.html"))
-);
-
-// API
-app.use("/api", require("./routes/index"));
-
-app.listen(PORT, () =>
-	console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+// Setup listener
+app.listen(PORT, function () {
+	console.log("App listening on PORT: " + PORT);
+});
