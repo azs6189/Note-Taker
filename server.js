@@ -1,19 +1,26 @@
-// Require dependencies
-const { application } = require("express");
+// Set Variables
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
-
-// Begin express app
+const router = require("./routes/index");
+const PORT = process.env.port || 3001;
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-application.use(express.static(__dirname));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-require("./routes/routes")(app);
+// GET route for the homepage
+app.get("/", (req, res) =>
+	res.sendFile(path.join(__dirname, "./public/index.html"))
+);
 
-app.listen(PORT, function () {
-	console.log("App listening on PORT: " + PORT);
-});
+// GEt route for the notes page
+app.get("/notes", (req, res) =>
+	res.sendFile(path.join(__dirname, "./public/notes.html"))
+);
+
+//api
+app.use("/api", require("./routes/index"));
+app.listen(PORT, () =>
+	console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
