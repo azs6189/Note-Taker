@@ -1,4 +1,3 @@
-// Set Variables
 const express = require("express");
 const path = require("path");
 const router = require("./routes/index");
@@ -9,18 +8,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// GET route for the homepage
+// GET route for homepage
 app.get("/", (req, res) =>
 	res.sendFile(path.join(__dirname, "./public/index.html"))
 );
 
-// GEt route for the notes page
+// GET route for notes page
 app.get("/notes", (req, res) =>
 	res.sendFile(path.join(__dirname, "./public/notes.html"))
 );
 
-//api
+// API
 app.use("/api", require("./routes/index"));
+
 app.listen(PORT, () =>
 	console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
