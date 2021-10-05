@@ -13,7 +13,7 @@
 
 Note Taker is an application that can be used to write and save notes. This application uses an Express.js back end and will save and retrieve note data from JSON file.
 
-[Deployed Heroku App](https://drive.google.com/file/d/1k_P6WCi_Ne7onMq2QMcg41IiP4r12Hw9/view?usp=sharing)
+[Deployed Heroku App](https://note-taker-azs6189.herokuapp.com/notes)
 
 ## Video
 
