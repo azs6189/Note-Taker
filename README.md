@@ -31,7 +31,7 @@ Run your application locally.
 node server.js
 ```
 
-You may open the app via [Heroku](https://drive.google.com/file/d/1k_P6WCi_Ne7onMq2QMcg41IiP4r12Hw9/view?usp=sharing).
+You may open the app via [Heroku](https://note-taker-azs6189.herokuapp.com/notes).
 
 ## Video
 
